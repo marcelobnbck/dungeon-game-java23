@@ -26,11 +26,13 @@ public class DungeonController {
         int[] dp = new int[n + 1];
         final int INF = Integer.MAX_VALUE;
 
+        // initialize dp to "infinity" except dp[n-1] = 1
         for (int j = 0; j <= n; j++) {
             dp[j] = INF;
         }
         dp[n - 1] = 1;
 
+        // fill from bottom-right to top-left
         for (int i = m - 1; i >= 0; i--) {
             dp[n] = INF;
             for (int j = n - 1; j >= 0; j--) {
@@ -42,4 +44,3 @@ public class DungeonController {
         return dp[0];
     }
 }
-
