@@ -11,7 +11,6 @@ public class DungeonResult {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // Store the grid as JSON text
     @Lob
     @Column(nullable = false)
     private String dungeonJson;
@@ -22,37 +21,23 @@ public class DungeonResult {
     @Column(nullable = false, updatable = false)
     private Instant createdAt = Instant.now();
 
-    // Constructors
+    @Column(nullable = false, length = 1)
+    private String variant; // "A" or "B"
+
     public DungeonResult() {}
 
-    public DungeonResult(String dungeonJson, int minInitialHealth) {
+    public DungeonResult(String dungeonJson, int minInitialHealth, String variant) {
         this.dungeonJson = dungeonJson;
         this.minInitialHealth = minInitialHealth;
+        this.variant = variant;
     }
 
-    // Getters and setters
-    public Long getId() {
-        return id;
-    }
-
-    public String getDungeonJson() {
-        return dungeonJson;
-    }
-
-    public void setDungeonJson(String dungeonJson) {
-        this.dungeonJson = dungeonJson;
-    }
-
-    public int getMinInitialHealth() {
-        return minInitialHealth;
-    }
-
-    public void setMinInitialHealth(int minInitialHealth) {
-        this.minInitialHealth = minInitialHealth;
-    }
-
-    public Instant getCreatedAt() {
-        return createdAt;
-    }
-
+    public Long getId() { return id; }
+    public String getDungeonJson() { return dungeonJson; }
+    public void setDungeonJson(String dungeonJson) { this.dungeonJson = dungeonJson; }
+    public int getMinInitialHealth() { return minInitialHealth; }
+    public void setMinInitialHealth(int minInitialHealth) { this.minInitialHealth = minInitialHealth; }
+    public Instant getCreatedAt() { return createdAt; }
+    public String getVariant() { return variant; }
+    public void setVariant(String variant) { this.variant = variant; }
 }
